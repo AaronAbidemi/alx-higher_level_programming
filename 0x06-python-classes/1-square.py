@@ -15,6 +15,5 @@ class Square:
         Initialization the attributes of Square
         Args:
             size (int): The size of a square
-            
         """
         self.__size = size
