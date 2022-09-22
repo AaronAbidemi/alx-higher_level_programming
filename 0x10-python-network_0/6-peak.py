@@ -1,34 +1,21 @@
 #!/usr/bin/python3
-"""contains the function find_peak"""
+"""
+find the peek
+"""
 
 
-def find_peak(list_of_integers):
-    """finds a peak in a list of unsorted integers"""
-    if not list_of_integers:
+def find_peak(arr):
+    """
+        find the peek
+    """
+    if arr == []:
         return None
-
-    length = len(list_of_integers)
-    half = int(length / 2)
-
-    # Validate Length only 3.
-    if half + 1 >= length and half - 1 < 0:
-        return list_of_integers[half]
-    elif half - 1 < 0:
-        if list_of_integers[half] > list_of_integers[half + 1]:
-            return list_of_integers[half]
-        else:
-            return list_of_integers[half + 1]
-    elif half + 1 >= length:
-        if list_of_integers[half] > list_of_integers[half - 1]:
-            return list_of_integers[half]
-        else:
-            return list_of_integers[half - 1]
-
-    if list_of_integers[half - 1] < list_of_integers[half]\
-       > list_of_integers[half + 1]:
-        return list_of_integers[half]
-
-    if list_of_integers[half + 1] > list_of_integers[half - 1]:
-        return find_peak(list_of_integers[half:])
-
-    return find_peak(list_of_integers[:half])
+    if len(arr) == 1:
+        return arr[0]
+    if arr[0] >= arr[1]:
+        return arr[0]
+    if arr[len(arr) - 1] >= arr[len(arr) - 2]:
+        return arr[len(arr) - 1]
+    for i in range(1, len(arr) - 1):
+        if arr[i] >= arr[i - 1] and arr[i] >= arr[i + 1]:
+            return arr[i]
